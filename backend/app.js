@@ -12,9 +12,6 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_CONFIG||'mongodb://localhost/Test');
-
 dataRoutes(app);
 
 //connection.end();
