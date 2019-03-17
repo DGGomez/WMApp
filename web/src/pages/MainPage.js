@@ -2,18 +2,12 @@ import React, {Component} from "react";
 import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
 import { connect } from 'react-redux';
 
-import { readData } from '../actions';
-import Card from '../components/Card';
-import { isNumber } from "util";
 
 class DashboardPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: false,
-      yourLocation: "",
-      page: 1
     };
   }
   myClick(){
@@ -45,4 +39,4 @@ class DashboardPage extends Component {
   }
 }
 
-export default connect(null, { readData })(DashboardPage);
+export default connect(null)(DashboardPage);
