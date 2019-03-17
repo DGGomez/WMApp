@@ -8,7 +8,9 @@ import {
 import {connect} from "react-redux";
 
 import DashboardPage from "./pages/MainPage";
-import ReportPage from "./pages/ReportPage";
+import OrderPage from "./pages/OrderPage";
+import TipsPage from "./pages/TipsPage";
+import ViewOrderPage from "./pages/ViewOrderPage";
 
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -25,7 +27,9 @@ class App extends Component {
                 <NavBar />
                 <Route path="/" exact component={DashboardPage} />
                 <Route path="/dashboard" exact component={DashboardPage} />
-                <Route path="/report" exact component={ReportPage} />
+                <Route path="/order" exact component={OrderPage} />
+                <Route path="/view" exact component={ViewOrderPage} />
+                <Route path="/tips" exact component={TipsPage} />
                 <Footer/>
             </div>
           </Router> 
