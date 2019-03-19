@@ -16,5 +16,20 @@ app.use(body-parser.text());
 
 dataRoutes(app);
 
+app.post("/charge", async (req, res) => {
+  try {
+    let {status} = await stripe.charges.create({
+      amount: 10,
+      currency: "cad",
+      description: "An example charge",
+      source: req.body
+    });
+
+    res.json({status});
+  } catch (err) {
+    res.status(500).end();
+  }
+});
+
 //connection.end();
 module.exports = app;
