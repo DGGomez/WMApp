@@ -20,3 +20,13 @@ export const readData = (orderNum, callback) => async () =>{
         console.log(err);
     }
 };
+
+export const paymentData = (callback) => async () =>{
+    try{
+        const res = await axios.post(`/charge`);
+        callback();
+    }
+    catch(err){
+        console.log(err);
+    }
+};
