@@ -4,7 +4,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import LoginScreen from '../screens/LoginScreen';
+import LogoutScreen from '../screens/LogoutScreen';
+import PaymentScreen from '../screens/PaymentScreen';
+import ViewOrderScreen from '../screens/ViewOrderScreen';
+import OrderScreen from '../screens/OrderScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
@@ -25,16 +29,30 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const OrderStack = createStackNavigator({
+  Order: OrderScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+OrderStack.navigationOptions = {
+  tabBarLabel: 'Order',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+    />
+  ),
+};
+
+const ViewOrderStack = createStackNavigator({
+   ViewOrder: ViewOrderScreen,
+});
+
+ViewOrderStack.navigationOptions = {
+  tabBarLabel: 'View Order',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
     />
   ),
 };
@@ -55,6 +73,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  OrderStack,
+  ViewOrderStack,
   SettingsStack,
 });
