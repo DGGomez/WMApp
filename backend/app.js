@@ -12,7 +12,7 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(body-parser.text());
+app.use(bodyParser.text());
 
 dataRoutes(app);
 

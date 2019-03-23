@@ -28,7 +28,7 @@ class DashboardPage extends Component {
     return (
       <div className="dashboard__container">
         <div className="profile__container">
-          <div className="profile-body__container"><H1>Hi I don't have any tips...sorry</H1></div>
+          <div className="profile-body__container"><h1>Hi I don't have any tips...sorry</h1></div>
           <div><p>I unno</p></div>
         </div>
       </div>

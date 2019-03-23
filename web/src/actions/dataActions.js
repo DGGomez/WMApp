@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const createData = (title, location, description, callback) => async () =>{
+export const createData = (name, location, description, callback) => async () =>{
     try{
-        const res = await axios.post('/create', {title,location,description});
+        const res = await axios.post('/create', {name, location,description});
         // should return an order number
         callback();
     }
@@ -13,7 +13,7 @@ export const createData = (title, location, description, callback) => async () =
 
 export const readData = (orderNum, callback) => async () =>{
     try{
-        const res = await axios.get(`/read/${location}`);
+        const res = await axios.get(`/read/${orderNum}`);
         callback();
     }
     catch(err){

@@ -28,7 +28,7 @@ class DashboardPage extends Component {
     return (
       <div className="dashboard__container">
         <div className="profile__container">
-          <div className="profile-body__container"><H1>Welcome to Weed Soil(name pending)</H1></div>
+          <div className="profile-body__container"><h1>Welcome to Weed Soil(name pending)</h1></div>
           <div><p>Hey our product increases the strength and potentcy of the weed you grow. If that sounds good to you order some!</p></div>
           <div><button onClick={this.myClick2}>Order</button></div>
           <div><p>already ordered?</p><button onClick={this.myClick}>View</button></div>
