@@ -10,15 +10,15 @@ class DashboardPage extends Component {
     this.state = {
     };
   }
-  myClick(){
+  myClick(props){
     const { history } = this.props;
     this.props.history.push("/view")
   }
-  myClick2(){
+  myClick2(props){
     const { history } = this.props;
     this.props.history.push("/order")
   }
-  myClick3(){
+  myClick3(props){
     const { history } = this.props;
     this.props.history.push("/tips")
   }

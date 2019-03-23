@@ -13,7 +13,7 @@ class NavBar extends Component {
                         <Link to="/" className="navbar-brand">
                             <strong>
                                 <img className="logo" align="left" src="./images/logo_2.png" alt="react-logo"/>
-                                FTB
+                                WS
                             </strong>
                         </Link>
                         <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible" aria-expanded="false">
