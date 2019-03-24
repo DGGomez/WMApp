@@ -18,7 +18,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGO_CONFIG);
+const db = mongoose.connection
+    .once('open', () => console.log('Connected to MongoDB'))
+    .on('error', error => console.warn('Warning: ', error));
+    
 dataRoutes(app);
 
 app.post("/charge", async (req, res) => {

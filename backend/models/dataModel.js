@@ -4,25 +4,22 @@ var Schema = mongoose.Schema;
 
 var DataSchema = new Schema({
   name: {
-    type: String,
-    required: 'Name of costumer'
+    type: String
   },
   location: {
-    type: String,
-    required: 'Where will this be sent'
+    type: String
+    
   },
   description: {
-    type: String,
-    required: 'Product'
-  },
-  date: {
-    type: Date,
-    default: Date.now
+    type: String
   },
   price: {
-    type: String,
-    required: 'Price payed'
-  }
+    type: String
+  },
+  created: { 
+    type: Date,
+    default: Date.now
+}
 });
 
 module.exports = mongoose.model('Data', DataSchema);
