@@ -20,7 +20,7 @@ var DataSchema = new Schema({
     default: Date.now
   },
   price: {
-    type: Number,
+    type: String,
     required: 'Price payed'
   }
 });

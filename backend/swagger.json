@@ -1,0 +1,111 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "API stuff",
+      "description": "Stuff API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/create": {
+        "post": {
+          "description": "Create new item",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "body",
+              "description": "Name",
+              "required": true,
+              "type": "string"
+            },
+            {
+                "name": "location",
+                "in": "body",
+                "description": "Name",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "name": "description",
+                "in": "body",
+                "description": "Name",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "name": "price",
+                "in": "body",
+                "description": "Name",
+                "required": true,
+                "type": "string"
+              }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New user is created",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "/read": {
+        "post": {
+          "summary": "Get item with given ID",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Item is found",
+              "schema": {
+                "$ref": "#/definitions/Item"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Item": {
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "Created_date": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "Items": {
+        "type": "array",
+        "$ref": "#/definitions/Item"
+      }
+    }
+  }
