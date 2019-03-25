@@ -10,7 +10,7 @@
       }
     },
     "host": "localhost:8080",
-    "basePath": "/api/v1",
+    "basePath": "/",
     "tags": [
       {
         "name": "Users",
@@ -18,7 +18,7 @@
       }
     ],
     "schemes": [
-      "http"
+      "https"
     ],
     "consumes": [
       "application/json"
@@ -32,33 +32,14 @@
           "description": "Create new item",
           "parameters": [
             {
-              "name": "name",
+              "name": "items",
               "in": "body",
-              "description": "Name",
+              "description": "items",
               "required": true,
-              "type": "string"
-            },
-            {
-                "name": "location",
-                "in": "body",
-                "description": "Name",
-                "required": true,
-                "type": "string"
-              },
-              {
-                "name": "description",
-                "in": "body",
-                "description": "Name",
-                "required": true,
-                "type": "string"
-              },
-              {
-                "name": "price",
-                "in": "body",
-                "description": "Name",
-                "required": true,
-                "type": "string"
-              }
+              "schema": {
+              "$ref": "#/definitions/Item"
+          }            
+          }
           ],
           "produces": [
             "application/json"
@@ -91,14 +72,17 @@
     "definitions": {
       "Item": {
         "properties": {
-          "_id": {
+          "name": {
             "type": "string",
             "uniqueItems": true
           },
-          "Created_date": {
+          "location": {
             "type": "string"
           },
-          "status": {
+          "description": {
+            "type": "string"
+          }
+          "price": {
             "type": "string"
           }
         }
