@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { StackNavigator, createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
@@ -10,6 +10,50 @@ import PaymentScreen from '../screens/PaymentScreen';
 import ViewOrderScreen from '../screens/ViewOrderScreen';
 import OrderScreen from '../screens/OrderScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import CreateUserScreen from '../screens/CreateUserScreen';
+
+export default StackNavigator ({
+    home 		: {
+			screen 	: HomeScreen
+		} ,
+
+		login 	: {
+			screen 	: LoginScreen
+		} ,
+
+		logout 		: {
+			screen 	: LogoutScreen
+		} ,
+
+		pay 		: {
+			screen 	: PaymentScreen
+		} ,
+
+		view 	: {
+			screen 	: ViewOrderScreen
+		} ,
+
+		order 	: {
+			screen 	: OrderScreen
+		} ,
+		create 	: {
+			screen 	: CreateUserScreen
+		}
+	} ,
+
+	{
+		navigationOptions : ({ screenProps }) => {
+
+			const 	theme 		= screenProps.theme ,
+					appearance 	= header ( theme ) 	;
+
+			return {
+				headerStyle 		: appearance.header ,
+				headerTitleStyle 	: appearance.title
+			};
+		}
+	}
+);
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,

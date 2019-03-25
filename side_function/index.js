@@ -1,8 +1,11 @@
+require('dotenv').config();
 
 var mongoose = require('./connections/main');
 var order = mongoose.model('Data');
 var alasql = require('alasql');
 
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGO_CONFIG);
 function run(){
     //vars
     var list;
@@ -11,17 +14,18 @@ function run(){
         if (err)
         //should log these somewhere
           console.log(err);
-        var list = data;
+        list = data;
       });
 
     // change connections
-    mongoose = require('./connections/archive');
-    var new_order = new order(req.body);
+    for( var i =0; i<list.length; i++){
+    var new_order = new order(list[i]);
     new_order.save(function(err, data) {
         if (err)
             console.log(err);
         console.log(data);
     });
+    }
     // create name for excel sheet
     var name = "order-"+Date.now;
     

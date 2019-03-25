@@ -6,8 +6,6 @@ import { readData } from '../actions';
 import Card from '../components/Card';
 import { isNumber } from "util";
 
-const numbers = ['1','2','3','4', '5', '6', '7', '8', '9', '10'];
-
 class DashboardPage extends Component {
   constructor(props) {
     super(props);
@@ -19,16 +17,6 @@ class DashboardPage extends Component {
     };
   }
 
-  componentDidMount() {
-
-    const { fetchReports, report } = this.props;
-    if(report !== undefined) {
-      this.setState({ loading: true });
-      readData({location: this.state.yourLocation},
-        () => this.setState({ loading: false, page: this.state.page++ })
-      );
-    }
-  }
   componentWillReceiveProps(nextProps) {
     console.log('reveive props: ', nextProps);
     const { readData, report } = nextProps;
@@ -41,7 +29,7 @@ class DashboardPage extends Component {
   }
 
   renderReport = () => {
-    const { report } = this.props;
+    const { order } = this.props;
     const { loading } = this.state;
     if(loading) {
       return (
@@ -50,25 +38,21 @@ class DashboardPage extends Component {
         </div>
       );
     } else {
-      if(report !== undefined) {
+      if(order !== undefined) {
         return (
             <div className="container">
               <div className="heading__container">
-                Reports
+                Order Info
               </div>
               <div className="body__container">
-                {numbers.map((digit,index) => {
-                  return (
-                    <Card title={report[digit].title} location={report[digit].location} description={report[digit].description} />
-                  );
-                  })}
+
               </div>
           </div>
         );
      } else {
        return (
          <div>
-           No Reports :D
+           No Orders :D
          </div>
        );
      }

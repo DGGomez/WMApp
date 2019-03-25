@@ -13,6 +13,7 @@ import TipsPage from "./pages/TipsPage";
 import ViewOrderPage from "./pages/ViewOrderPage";
 import PaymentPage from "./pages/PaymentPage";
 import LoginPage from "./pages/LoginPage";
+import SuccessPage from "./pages/SuccessPage";
 import LogoutPage from "./pages/LogOutPage"
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -35,6 +36,7 @@ class App extends Component {
                 <Route path="/login" exact component={LoginPage} />
                 <Route path="/logout" exact component={LogoutPage} />
                 <Route path="/tips" exact component={TipsPage} />
+                <Route path="/success" exact component={SuccessPage} />
                 <Footer/>
             </div>
           </Router> 

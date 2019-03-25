@@ -17,6 +17,8 @@ async submit(ev) {
   });
 
   if (response.ok) this.setState({complete: true});
+  this.props.history.push("/dashboard");
+  
 }
 
 render() {
