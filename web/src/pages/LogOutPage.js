@@ -9,7 +9,7 @@ class LogoutPage extends Component {
     componentDidMount() {
         const { user, logoutUser } = this.props;
         if(user !== undefined) {
-            logoutUser(() => setTimeout(() => this.props.history.push('/'), 2000));
+            logoutUser(() => setTimeout(() => this.props.history.push('/dashboard'), 2000));
         }
     }
     render() {
