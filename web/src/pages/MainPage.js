@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
 import { connect } from 'react-redux';
 
+import {Link} from "react-router-dom";
 
 class DashboardPage extends Component {
   constructor(props) {
@@ -10,18 +11,7 @@ class DashboardPage extends Component {
     this.state = {
     };
   }
-  myClick(props){
-    const { history } = this.props;
-    this.props.history.push("/view")
-  }
-  myClick2(props){
-    const { history } = this.props;
-    this.props.history.push("/order")
-  }
-  myClick3(props){
-    const { history } = this.props;
-    this.props.history.push("/tips")
-  }
+
 
   render() {
     const { report } = this.props;
@@ -30,13 +20,14 @@ class DashboardPage extends Component {
         <div className="profile__container">
           <div className="profile-body__container"><h1>Welcome to Weed Soil(name pending)</h1></div>
           <div><p>Hey our product increases the strength and potentcy of the weed you grow. If that sounds good to you order some!</p></div>
-          <div><button onClick={this.myClick2}>Order</button></div>
-          <div><p>already ordered?</p><button onClick={this.myClick}>View</button></div>
-          <div><p>Also here are some growing tips =D<button onClick={this.myClick3}>Tips!</button></p></div>
+          <div><Link to ="order" className="btn btn-default btn-lg btn-block">Order</Link></div>
+          <div><p>already ordered?</p><Link to ="View" className="btn btn-default btn-lg btn-block">View</Link></div>
+          <div><p>Also here are some growing tips =D<Link to ="tips" className="btn btn-default btn-lg btn-block">Tips!</Link></p></div>
         </div>
       </div>
     );
   }
 }
-
-export default connect(null)(DashboardPage);
+const mapStateToProps = ({ }) => {
+};
+export default connect(mapStateToProps, null)(DashboardPage);

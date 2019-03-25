@@ -17,8 +17,13 @@ constructor(props) {
     };
 }
 
+// can't order until you are logged in
 componentDidMount(){
   console.log(this.props);
+  // const { user } = this.props;
+  //   if(user == undefined) {
+  //     this.props.history.push('/login');
+  //   }
 }
 validateForm() {
     return this.state.name.length > 0 && this.state.location.length > 0 && this.state.description.length > 0;
