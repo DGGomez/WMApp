@@ -3,24 +3,12 @@ import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-b
 import { connect } from 'react-redux';
 
 
-class DashboardPage extends Component {
+class TipsPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
     };
-  }
-  myClick(){
-    const { history } = this.props;
-    this.props.history.push("/view")
-  }
-  myClick2(){
-    const { history } = this.props;
-    this.props.history.push("/order")
-  }
-  myClick3(){
-    const { history } = this.props;
-    this.props.history.push("/tips")
   }
 
   render() {
@@ -36,4 +24,4 @@ class DashboardPage extends Component {
   }
 }
 
-export default connect(null)(DashboardPage);
+export default connect(null)(TipsPage);

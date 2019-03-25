@@ -28,12 +28,12 @@ validateForm() {
   }
 
   handleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault();t
     const { loginUser, history } = this.props;
     const { email, password } = this.state;
     console.log('submit: ', email, password);
 
-    loginUser(email, password, () => this.props.history.push("/dashboard"));
+    loginUser(email, password, () => this.props.history.push("/success"));
   }
   render() {
     return (
