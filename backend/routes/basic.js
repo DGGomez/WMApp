@@ -8,5 +8,7 @@ app.route('/create')
 
 app.route('/read')
     .post(dataList.read);
-
+    
+app.route('/archive')
+    .post(dataList.archive);
 }
