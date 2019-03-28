@@ -8,7 +8,6 @@ var DataSchema = new Schema({
   },
   location: {
     type: String
-    
   },
   description: {
     type: String

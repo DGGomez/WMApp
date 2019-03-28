@@ -81,7 +81,7 @@
           },
           "description": {
             "type": "string"
-          }
+          },
           "price": {
             "type": "string"
           }
