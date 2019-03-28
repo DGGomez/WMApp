@@ -21,20 +21,22 @@ exports.create = function(req, res) {
 exports.read = function(req, res) {
   console.log(req);
   mongoose.connection.db.collection("Orders", function(err,orders){
-    console.log("1");
     if (err){
       res.send(err);
     }
-    console.log("2");
 
-    orders.find(req.body.location, function(err, data) {
-      console.log("3");
+    orders.find({location: req.body.location}).toArray(function(err, data) {
 
       if (err){
-        console.log("4");
 
         mongoose.connection.db.collection("Archive", function(err,archives){
-          archives.find(req.body.location, function(err, data) {
+          if (err){
+            res.send(err);
+          }
+          archives.find({location: req.body.location}).toArray(function(err, data) {
+            if (err){
+              res.send(err);
+            }
             res.json(data);
           });
           })
