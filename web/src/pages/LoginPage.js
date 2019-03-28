@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import {Button, FormGroup, FormControl } from "react-bootstrap";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {loginUser} from "../actions";
@@ -28,7 +28,7 @@ validateForm() {
   }
 
   handleSubmit = event => {
-    event.preventDefault();t
+    event.preventDefault();
     const { loginUser, history } = this.props;
     const { email, password } = this.state;
     console.log('submit: ', email, password);
@@ -43,7 +43,7 @@ validateForm() {
   <div className="col-md-6 col-md-offset-3">
         <form onSubmit={this.handleSubmit}>
           <FormGroup className="form-horizontal" controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
+            <h1>Email</h1>
             <FormControl
               autoFocus
               type="email"
@@ -52,7 +52,7 @@ validateForm() {
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
+            <h1>Password</h1>
             <FormControl
               value={this.state.password}
               onChange={this.handleChange}

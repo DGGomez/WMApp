@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Panel } from 'react-bootstrap';
 
 import { logoutUser } from '../actions';
 
@@ -14,16 +13,9 @@ class LogoutPage extends Component {
     }
     render() {
         return (
-            <Panel bsStyle="success">
-                <Panel.Heading>
-                    <Panel.Title componentClass="h3">You are logged out!</Panel.Title>
-                </Panel.Heading>
-                <Panel.Body>
                     <div>
                         <p>You will now be re-directed!</p>
                     </div>
-                </Panel.Body>
-            </Panel>
         );
     }
 }
