@@ -11,9 +11,10 @@ export const createData = (name, location, description, callback) => async () =>
     }
 };
 
-export const readData = (orderNum, callback) => async () =>{
+export const readData = (location, callback) => async () =>{
     try{
-        const res = await axios.get(`/read/${orderNum}`);
+        const res = await axios.post(`/read`, {location});
+        
         callback();
     }
     catch(err){
