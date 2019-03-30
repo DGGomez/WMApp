@@ -1,8 +1,14 @@
 'use strict';
 var mongoose = require('mongoose');
 var order = mongoose.model('Data');
+var User = mongoose.model('User');
+const jwt = require('jsonwebtoken');
+const moment = require('moment');
 
-exports.create = function(req, res) {
+var authenticate = require('../middleware/authenticate');
+
+exports.create = async function(req, res) {
+  try{
   var new_order = new order (
     req.body
   );
@@ -15,11 +21,16 @@ exports.create = function(req, res) {
       res.json(data);
     });
   });
-
+  }
+  catch(err){
+    console.log(err);
+    res.status(400).send({ message: error });
+  }
 };
 
-exports.read = function(req, res) {
-var status = 0;
+exports.read = async function(req, res) {
+  try{
+  var status = 0;
   mongoose.connection.db.collection("Orders", function(err,orders){
     if (err){
       res.send(err);
@@ -33,9 +44,15 @@ var status = 0;
       
   });
 });
+  }
+  catch(err){
+    console.log(err);
+    res.status(400).send({ message: error });
 
+  }
 }
-exports.archive = function(req, res) {
+exports.archive = async function(req, res) {
+  try{
   var location = req.body.location;
   mongoose.connection.db.collection("Archive", function(err,archives){
     if (err){
@@ -48,5 +65,60 @@ exports.archive = function(req, res) {
       res.json(data);
     });
     })
-  
+  }
+  catch(err){
+    console.log(err);
+    res.status(400).send({ message: error });
+
+  }
+}
+
+exports.registerUser = async function(req,res){
+  try {
+    console.log('registerUser: ', req.body);
+    const { email, password, name, username } = req.body;
+    let user = await User.createUser({ email, password, name, username });
+
+    let currentDate = moment().startOf('day');
+    let schedule = new MealSchedule({
+        userId: user._id,
+        date: currentDate
+    });
+
+    await schedule.save();
+    let token = await jwt.sign({ user }, process.env.SECRET_KEY);
+    res.status(200).send({ user, token });
+} catch (error) {
+    console.log('registerUser error: ', error);
+    res.status(400).send({ message: error });
+}
+}
+
+exports.loginUser = async function(req,res){
+  try {
+    console.log('loginUser: ', req.body);
+    const { email, password } = req.body;
+
+    let existingUser = await User.findOne({ email });
+    if(existingUser === null) {
+        return res.status(400).send({ message: 'User does not exists' });
+    }
+
+    let isMatch =  await User.comparePassword(password, existingUser.password);
+    
+    if(isMatch) {
+        let token = await jwt.sign({ user: existingUser }, process.env.SECRET_KEY);
+        res.status(200).send({ user: existingUser, token });
+    } else {
+        res.status(400).send({ message: 'Incorrect email/password' });
+    }
+    
+} catch (error) {
+    console.log('loginUser error: ', error);
+    res.status(400).send({ message: error });
+}
+}
+
+exports.getUser = async function(req,res){
+
 }

@@ -11,4 +11,14 @@ app.route('/read')
     
 app.route('/archive')
     .post(dataList.archive);
+
+app.post('/register')
+    .post(dataList.registerUser);
+
+app.post('/login')
+    .post(dataList.loginUser);
+
+app.post('/token-login')
+    .post(dataList.getUser);
+
 }
