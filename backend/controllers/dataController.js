@@ -5,8 +5,6 @@ var User = mongoose.model('User');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
 
-var authenticate = require('../middleware/authenticate');
-
 exports.create = async function(req, res) {
   try{
   var new_order = new order (
@@ -78,14 +76,6 @@ exports.registerUser = async function(req,res){
     console.log('registerUser: ', req.body);
     const { email, password, name, username } = req.body;
     let user = await User.createUser({ email, password, name, username });
-
-    let currentDate = moment().startOf('day');
-    let schedule = new MealSchedule({
-        userId: user._id,
-        date: currentDate
-    });
-
-    await schedule.save();
     let token = await jwt.sign({ user }, process.env.SECRET_KEY);
     res.status(200).send({ user, token });
 } catch (error) {
@@ -120,5 +110,17 @@ exports.loginUser = async function(req,res){
 }
 
 exports.getUser = async function(req,res){
+  try {
+    console.log('getUser: ', req.user);
+    let { user } = req;
 
+    let updatedUser = await User.findOne({ _id: user._id });
+
+    let token = await jwt.sign({ user: updatedUser }, process.env.SECRET_KEY);
+    
+    res.status(200).send({ user: updatedUser, token });
+} catch (error) {
+    console.log('getUser error: ', error);
+    res.status(400).send({ message: error });
+}
 }

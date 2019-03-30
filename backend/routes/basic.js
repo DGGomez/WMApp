@@ -1,4 +1,5 @@
 const express = require('express');
+var authenticate = require('../middleware/authenticate');
 
 module.exports = function(app, db) {
 var dataList = require('../controllers/dataController');
@@ -19,6 +20,6 @@ app.post('/login')
     .post(dataList.loginUser);
 
 app.post('/token-login')
-    .post(dataList.getUser);
+    .post(authenticate, dataList.getUser);
 
 }

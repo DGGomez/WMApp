@@ -9,9 +9,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dataRoutes = require('./routes/basic');
 const data = require('./models/dataModel');
+const user = require('./models/userModel');
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const app = express();
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
