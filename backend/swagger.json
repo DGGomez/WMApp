@@ -11,15 +11,6 @@
     },
     "host": "localhost:8080",
     "basePath": "/",
-    "tags": [
-      {
-        "name": "Users",
-        "description": "API for users in the system"
-      }
-    ],
-    "schemes": [
-      "https"
-    ],
     "consumes": [
       "application/json"
     ],
@@ -48,7 +39,7 @@
             "200": {
               "description": "New user is created",
               "schema": {
-                "$ref": "#/definitions/User"
+                "$ref": "#/definitions/Item"
               }
             }
           }
@@ -57,7 +48,17 @@
       "/read": {
         "post": {
           "summary": "Get item with given ID",
-          "parameters": [],
+          "parameters": [
+            {
+              "name": "items",
+              "in": "body",
+              "description": "items",
+              "required": true,
+              "schema": {
+              "$ref": "#/definitions/Itemread"
+          }            
+          }
+          ],
           "responses": {
             "200": {
               "description": "Item is found",
@@ -83,6 +84,13 @@
             "type": "string"
           },
           "price": {
+            "type": "string"
+          }
+        }
+      },
+      "Itemread": {
+        "properties": {
+          "location": {
             "type": "string"
           }
         }
