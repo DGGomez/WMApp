@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class Card extends Component {
     render() {

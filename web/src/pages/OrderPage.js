@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Button, FormGroup, FormControl } from "react-bootstrap";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import {createData} from "../actions";
 
 class ReportPage extends Component {

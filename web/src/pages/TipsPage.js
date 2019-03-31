@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
 import { connect } from 'react-redux';
 
 
@@ -12,7 +11,6 @@ class TipsPage extends Component {
   }
 
   render() {
-    const { report } = this.props;
     return (
       <div className="dashboard__container">
         <div className="profile__container">

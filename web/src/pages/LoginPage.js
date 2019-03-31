@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Button, FormGroup, FormControl } from "react-bootstrap";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import {loginUser} from "../actions";
 
 class LoginPage extends Component {
@@ -33,7 +32,7 @@ validateForm() {
     const { email, password } = this.state;
     console.log('submit: ', email, password);
 
-    loginUser(email, password, () => this.props.history.push("/success"));
+    loginUser(email, password, () => history.push("/success"));
   }
   render() {
     return (

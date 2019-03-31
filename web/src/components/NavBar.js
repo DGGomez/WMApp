@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavItem, Nav } from 'react-bootstrap';
+import {Layout, Header, Navigation, Drawer} from 'react-mdl';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -7,24 +7,28 @@ class NavBar extends Component {
     render() {
         const { user } = this.props;
         return (
-            <nav className="navbar navbar-inverse bg-inverse navbar-fixed-top">
-                <div className="container">
-                    <div className="navbar-header">
-                        <Link to="/" className="navbar-brand">
-                            <strong>
-                                <img className="logo" align="left" src="./images/logo_2.png" alt="react-logo"/>
-                                WS
-                            </strong>
-                        </Link>
-                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible" aria-expanded="false">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                    </div>
-                </div>
-            </nav>
+            <div className="demo-big-content">
+    <Layout>
+        <Header className="header-color" title="Title" scroll>
+            <Navigation>
+                <Link to="/">Home</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/order">Order</Link>
+                <Link to="/tips">Tips</Link>
+                <Link to="/contact">Contact</Link>
+            </Navigation>
+        </Header>
+        <Drawer title="Title">
+            <Navigation>
+                <Link to="/">Home</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/order">Order</Link>
+                <Link to="/tips">Tips</Link>
+                <Link to="/contact">Contact</Link>
+            </Navigation>
+        </Drawer>
+    </Layout>
+</div>
         );
     }
 }
