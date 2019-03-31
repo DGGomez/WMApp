@@ -18,7 +18,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import logo from './logo.svg';
 import './App.css';
-
+import 'antd/dist/antd.css';
 class App extends Component {
 
   render() {

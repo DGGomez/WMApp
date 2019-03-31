@@ -1,36 +1,54 @@
 import React, { Component } from 'react';
-import {Layout, Header, Navigation, Drawer} from 'react-mdl';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-class NavBar extends Component {
-    render() {
-        const { user } = this.props;
-        return (
-            <div className="demo-big-content">
-    <Layout>
-        <Header className="header-color" title="Title" scroll>
-            <Navigation>
-                <Link to="/">Home</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/order">Order</Link>
-                <Link to="/tips">Tips</Link>
-                <Link to="/contact">Contact</Link>
-            </Navigation>
-        </Header>
-        <Drawer title="Title">
-            <Navigation>
-                <Link to="/">Home</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/order">Order</Link>
-                <Link to="/tips">Tips</Link>
-                <Link to="/contact">Contact</Link>
-            </Navigation>
-        </Drawer>
-    </Layout>
+import LeftMenu from './LeftMenu'
+import RightMenu from './RightMenu'
+import { Drawer, Button } from 'antd';
+class Navbar extends Component {
+  state = {
+    current: 'mail',
+    visible: false
+  }
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+render() {
+    return (
+        <div>
+        <div className="profile-body__container"><h1>Welcome to Weed Soil(name pending)</h1></div>
+        <nav className="menuBar">
+          <div className="logo">
+            <a href="">logo</a>
+          </div>
+          <div className="menuCon">
+            <div className="leftMenu">
+              <LeftMenu />
+            </div>
+            <div className="rightMenu">
+                <RightMenu />
+            </div>
+            <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
+              <span className="barsBtn"></span>
+            </Button>
+            <Drawer
+              title="Basic Drawer"
+              placement="right"
+              closable={false}
+              onClose={this.onClose}
+              visible={this.state.visible}
+            >
+              <LeftMenu />
+              <RightMenu />
+            </Drawer>
 </div>
-        );
-    }
+        </nav>
+        </div>
+    );
+  }
 }
-
-export default connect(null)(NavBar);
+export default Navbar;
