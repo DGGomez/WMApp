@@ -16,6 +16,9 @@ import SuccessPage from "./pages/SuccessPage";
 import LogoutPage from "./pages/LogOutPage"
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import RegisterPage from './pages/CreateUserPage';
+import ContactPage from './pages/ContactPage';
+
 import logo from './logo.svg';
 import './App.css';
 import 'antd/dist/antd.css';
@@ -36,6 +39,8 @@ class App extends Component {
                 <Route path="/logout" exact component={LogoutPage} />
                 <Route path="/tips" exact component={TipsPage} />
                 <Route path="/success" exact component={SuccessPage} />
+                <Route path="/create" exact component={RegisterPage} />
+                <Route path="/contact" exact component={ContactPage} />
                 <Footer/>
             </div>
           </Router> 

@@ -14,14 +14,21 @@ class DashboardPage extends Component {
 
   render() {
     return (
-      <div className="dashboard__container">
-        <div className="profile__container">
+      <div className="container">
+      <div class="form-group">
           <div><p>Hey our product increases the strength and potentcy of the weed you grow. If that sounds good to you order some!</p></div>
-          <div><br/><Link to ="/order" className="btn btn-default btn-lg btn-block">Order</Link><br/></div>
-          <div><p>already ordered?</p><Link to ="/view" className="btn btn-default btn-lg btn-block">View</Link></div>
-          <div><p>Also here are some growing tips =D<Link to ="/tips" className="btn btn-default btn-lg btn-block">Tips!</Link></p></div>
-        </div>
+          <div><Link to ="/order" className="btn btn-default btn-lg btn-block">Order</Link></div>
       </div>
+      <div class="form-group">
+          <div><p>already ordered?</p></div>
+          <div><Link to ="/view" className="btn btn-default btn-lg btn-block">View</Link></div>
+      </div>
+      <div class="form-group">
+          <div><p>Also here are some growing tips =D</p></div>
+          <div><Link to ="/tips" className="btn btn-default btn-lg btn-block">Tips!</Link></div>
+      </div>
+      </div>
+
     );
   }
 }

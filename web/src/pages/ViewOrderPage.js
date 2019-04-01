@@ -12,15 +12,14 @@ class DashboardPage extends Component {
 
     this.state = {
       loading: false,
-      yourLocation: "",
-      page: 1
-    };
+      yourLocation: ""
+        };
   }
 
   componentWillReceiveProps(nextProps) {
     console.log('reveive props: ', nextProps);
-    const { readData, report } = nextProps;
-    if(report === undefined) {
+    const { readData, order } = nextProps;
+    if(order === undefined) {
       this.setState({ loading: true });
       readData({ location: this.state.yourLocation },
         () => this.setState({ loading: false })
@@ -115,13 +114,12 @@ class DashboardPage extends Component {
     }
   }
   render() {
-    const { report } = this.props;
+    const { order } = this.props;
     return (
       <div className="dashboard__container">
         <div className="profile__container">
-          <div className="profile-body__container">div content</div>
         </div>
-        {report !== undefined ? this.renderReport() : this.renderForm() }
+        {order !== undefined ? this.renderReport() : this.renderForm() }
       </div>
     );
   }

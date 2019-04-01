@@ -23,7 +23,7 @@ render() {
         <div className="profile-body__container"><h1>Welcome to Weed Soil(name pending)</h1></div>
         <nav className="menuBar">
           <div className="logo">
-            <a href="">logo</a>
+            <a href="/">logo</a>
           </div>
           <div className="menuCon">
             <div className="leftMenu">
