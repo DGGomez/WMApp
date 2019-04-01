@@ -23,7 +23,7 @@ class ContactPage extends Component {
   async handleSubmit(e){
       e.preventDefault()
       const { name, email, message } = this.state
-      const form = await axios.post('/api/form',{
+      const form = await axios.post('/send',{
           name,email,message
       })
   }

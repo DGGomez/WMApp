@@ -19,8 +19,16 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.urlencoded());
+app.use(express.multipart());
 app.use(bodyParser.text());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_CONFIG);
 const db = mongoose.connection
@@ -29,51 +37,40 @@ const db = mongoose.connection
     
 dataRoutes(app);
 
-app.post('/api/form', (req,res) => {
-  const output = `
-  <p>You have a new contact request</p>
-  <h3>Contact Details</h3>
-  <ul>  
-    <li>Name: ${req.body.name}</li>
-    <li>Email: ${req.body.email}</li>
-  </ul>
-  <h3>Message</h3>
-  <p>${req.body.message}</p>
-`;
-
-// create reusable transporter object using the default SMTP transport
-let transporter = nodemailer.createTransport({
-  host: 'WillMurrayApps@gmail.com',
-  port: 587,
-  secure: false, // true for 465, false for other ports
-  auth: {
-      user: process.env.email, // generated ethereal user
-      pass: process.env.password  // generated ethereal password
-  },
-  tls:{
-    rejectUnauthorized:false
-  }
-});
-
-// setup email data with unicode symbols
-let mailOptions = {
-    from: '"Nodemailer Contact" <WillMurrayApps@gmail.com>', // sender address
-    to: 'WillMurrayApps@gmail.com', // list of receivers
-    subject: 'Node Contact Request', // Subject line
-    text: 'Hello', // plain text body
-    html: output // html body
+var auth = {
+    type: 'oauth2',
+    user: 'WillMurrayApps@gmail.com',
+    clientId: process.env.ID,
+    clientSecret: process.env.SECRET,
+    refreshToken: process.env.REFRESH,
 };
 
-// send mail with defined transport object
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        return console.log(error);
-    }
-    console.log('Message sent: %s', info.messageId);   
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-    res.render('contact', {msg:'Email has been sent'});
-});
+app.post('/send', function(req, res){
+  response = {
+    name: req.body.name,
+    email: req.body.email,
+    message: req.body.message
+  }
+  
+  
+  var mailOptions = {
+      from: req.body.name,
+      to: 'rista90@gmail.com',
+      subject: 'My site contact from: ' + req.body.name,
+      text: req.body.message,
+      html: 'Message from: ' + req.body.name + '<br></br> Email: ' +  req.body.email + '<br></br> Message: ' + req.body.message,
+  };
+var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: auth,
+  });
+transporter.sendMail(mailOptions, (err, res) => {
+      if (err) {
+          return console.log(err);
+      } else {
+          console.log(JSON.stringify(res));
+      }
+  });
 });
 
 app.post("/charge", async (req, res) => {
