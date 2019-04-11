@@ -74,9 +74,4 @@ validateForm() {
   }
 }
 
-const mapStateToProps = ({ user }) => {
-    return { 
-      user
-    };
-  };
-export default connect(mapStateToProps, { loginUser })(LoginPage);
+export default connect(null, { loginUser })(LoginPage);
