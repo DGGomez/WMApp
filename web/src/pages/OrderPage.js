@@ -96,7 +96,7 @@ else{
     );
   }
 }
-const mapStateToProps = ({ auth, schedule }) => {
+const mapStateToProps = ({ auth, order }) => {
   return { 
     user: auth.user,
     token: auth.token,
