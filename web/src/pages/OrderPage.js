@@ -44,6 +44,8 @@ validateForm() {
   //if not loged in login
   // else show page
   render() {
+      const {user} = this.props;
+    if(user !== undefined) {
     return (
 
       <div className="container center-block">
@@ -87,8 +89,18 @@ validateForm() {
         </div>
         </div>
       </div>
+  }
+else{
+<div><h1>Login to order</h1></div>
+}
     );
   }
 }
-
-export default connect(null, { createData })(ReportPage);
+const mapStateToProps = ({ auth, schedule }) => {
+  return { 
+    user: auth.user,
+    token: auth.token,
+    order: order
+  };
+};
+export default connect(mapStateToProps, { createData })(ReportPage);
