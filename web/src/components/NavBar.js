@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import LeftMenu from './LeftMenu'
 import RightMenu from './RightMenu'
 import { Drawer, Button } from 'antd';
+
+// if user defined removed rightMenu
 class Navbar extends Component {
   state = {
     current: 'mail',
