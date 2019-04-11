@@ -41,6 +41,8 @@ validateForm() {
 
     createData(name, location, description, () => this.props.history.push("/dashboard"));
   }
+  //if not loged in login
+  // else show page
   render() {
     return (
 
@@ -79,7 +81,7 @@ validateForm() {
             disabled={!this.validateForm()}
             type="submit"
           >
-            Login
+            Submit
           </Button>
         </form>
         </div>
