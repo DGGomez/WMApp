@@ -125,4 +125,12 @@ class DashboardPage extends Component {
   }
 }
 
-export default connect(null, { readData })(DashboardPage);
+const mapStateToProps = ({ auth, order }) => {
+  return { 
+    user: auth.user,
+    token: auth.token,
+    order
+  };
+};
+
+export default connect(mapStateToProps, { readData })(DashboardPage);
