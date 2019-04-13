@@ -88,12 +88,12 @@ validateForm() {
         </form>
         </div>
         </div>
-      </div>
-  }
+      </div>);
+    }
 else{
-<div><h1>Login to order</h1></div>
+  return(
+<div><h1>Login to order</h1></div>);
 }
-    );
   }
 }
 const mapStateToProps = ({ auth, order }) => {
