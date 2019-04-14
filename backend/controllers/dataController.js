@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 var order = mongoose.model('Data');
 var User = mongoose.model('User');
 const jwt = require('jsonwebtoken');
-const moment = require('moment');
 
 exports.create = async function(req, res) {
+  console.log("Helo");
   try{
   var new_order = new order (
     req.body
@@ -27,6 +27,7 @@ exports.create = async function(req, res) {
 };
 
 exports.read = async function(req, res) {
+ console.log("read");
   try{
   var status = 0;
   mongoose.connection.db.collection("Orders", function(err,orders){
@@ -72,6 +73,7 @@ exports.archive = async function(req, res) {
 }
 
 exports.registerUser = async function(req,res){
+  console.log("WOWOR");
   try {
     console.log('registerUser: ', req.body);
     const { email, password, name, username } = req.body;

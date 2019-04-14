@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const createData = (name, location, description, callback) => async () =>{
     try{
-        const res = await axios.post('https://sheltered-island-21284.herokuapp.com/create', {name, location,description});
+        const res = await axios.post('/create', {name, location,description});
         // should return an order number
         callback();
     }
@@ -13,7 +13,7 @@ export const createData = (name, location, description, callback) => async () =>
 
 export const readData = (location, callback) => async () =>{
     try{
-        const res = await axios.post(`https://sheltered-island-21284.herokuapp.com/read`, {location});
+        const res = await axios.post(`/read`, {location});
         
         callback();
     }
@@ -24,7 +24,7 @@ export const readData = (location, callback) => async () =>{
 
 export const paymentData = (callback) => async () =>{
     try{
-        const res = await axios.post(`https://sheltered-island-21284.herokuapp.com/charge`);
+        const res = await axios.post(`/charge`);
         callback();
     }
     catch(err){

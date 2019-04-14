@@ -13,13 +13,13 @@ app.route('/read')
 app.route('/archive')
     .post(dataList.archive);
 
-app.post('/register')
+app.route('/register')
     .post(dataList.registerUser);
 
-app.post('/login')
+app.route('/login')
     .post(dataList.loginUser);
 
-app.post('/token-login')
+app.route('/token-login')
     .post(authenticate, dataList.getUser);
 
 }

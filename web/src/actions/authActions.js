@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const RegisterUser = (email,password,username,name,callback) => async(dispatch) =>{
     try{
-        let { data } = await axios.post('/users/register', {email,password,username,name});
+        let { data } = await axios.post('/register', {email,password,username,name});
         storeAuthToken(data.token);
         dispatch({
             type: 'REGISTER',
@@ -20,7 +20,7 @@ export const RegisterUser = (email,password,username,name,callback) => async(dis
 
 export const loginUser = (email,password,callback) => async(dispatch) =>{
     try{
-        let { data } = await axios.post('/users/login', {email,password});
+        let { data } = await axios.post('/login', {email,password});
         storeAuthToken(data.token);
         dispatch({
             type: 'LOGIN',
@@ -43,7 +43,7 @@ export const tokenLogin = () => async (dispatch) => {
             console.log('tokenLogin: ', token);
             let { data } = await axios({
                 method: 'get',
-                url: `/users/token-login`,
+                url: `/token-login`,
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             storeAuthToken(data.token);
