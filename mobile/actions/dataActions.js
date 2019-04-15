@@ -35,6 +35,15 @@ class DataApi {
       throw e;
     }
   }
+  
+    async paymentData(args) {
+    try {
+      const res = await axios.post(`${this.path}/charge`, { ...args });
+      return res;
+    } catch (e) {
+      throw e;
+    }
+  }
 }
 
 export {
@@ -62,7 +71,7 @@ class UserApi {
     } catch (e) {
       throw e;
     }
-   
+    }
     async LogoutUser() {
     try {
       await removeAuthToken();
@@ -72,14 +81,14 @@ class UserApi {
     } catch (e) {
       throw e;
     }
-      
+    }
     async storeAuthToken() {
     try {
      await localStorage.setItem('authToken', JSON.stringify(token));
     } catch (e) {
       throw e;
     }   
-     
+    }
     async fetchAuthToken() {
     try {
      let token = await localStorage.getItem('authToken');
@@ -87,14 +96,14 @@ class UserApi {
     } catch (e) {
       throw e;
     }   
-      
+    } 
     async removeAuthToken() {
     try {
       await localStorage.removeItem('authToken');
     } catch (e) {
       throw e;
     }   
-            
+    }       
     async tokenLogin() {
     try {
       let token = await fetchAuthToken();
