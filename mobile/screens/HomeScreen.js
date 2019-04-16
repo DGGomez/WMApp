@@ -24,13 +24,13 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <Box>
-              Order here!!!
+              <Text>Order</Text>
           </Box>
           <Box>
-              Check Out Our Website!!!
+              <Text>View Order</Text>
           </Box>
           <Box>
-              View Order Here!!!
+              <Text>Website</Text>
           </Box>
         </ScrollView>
       </View>
