@@ -21,12 +21,9 @@ onClose = () => {
   };
 render() {
     return (
-        <div>
-        <div className="profile-body__container"><h1>Welcome to Weed Soil(name pending)</h1></div>
+
+        <div className="nav-logo"><img src="./WeedLogo.png"/>
         <nav className="menuBar">
-          <div className="logo">
-            <a href="/">logo</a>
-          </div>
           <div className="menuCon">
             <div className="leftMenu">
               <LeftMenu />

@@ -5,6 +5,15 @@
   overflow: auto;
   box-shadow: 0 0 30px #f3f1f1;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
+.nav-logo {
+  max-height: auto;
+  float: left;
+  margin: 3px;
+  padding: 3px;}
 .logo{
   width: 150px;
   float: left;
